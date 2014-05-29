@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%- @document.title %> - 赵人希</title>
+  </head>
+  <body>
+    <h1><%- @document.title %></h1>
+    <p><a href="../">返回</a></p>
+    <p><%- @document.note_date %></p>
+    <p><img src="cover.jpg" alt="cover" /></p>
+    <%- @content %>
+    <p><a href="<%= @document.link %>">阅读原文</a></p>
+  </body>
+</html>
