@@ -3,6 +3,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><%- @document.title %> - 赵人希</title>
+    <style>
+      body {
+        font-size: 12pt;
+      }
+      h1 {
+        font-size: 20pt;
+      }
+      code {
+        font-size: 12pt;
+      }
+    </style>
   </head>
   <body>
     <h1><%- @document.title %></h1>
