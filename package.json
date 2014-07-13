@@ -9,7 +9,8 @@
   "dependencies": {
     "docpad": "~6.60.3",
     "docpad-plugin-marked": "~2.2.1",
-    "docpad-plugin-eco": "~2.0.3"
+    "docpad-plugin-eco": "~2.0.3",
+    "docpad-plugin-highlightjs": "~2.2.2"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {

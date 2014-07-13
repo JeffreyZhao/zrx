@@ -13,11 +13,27 @@ note_date: "2014-05-15"
 
 且看下方的接口：
 
-<img src="1.png" width="303" />
+```csharp
+public interface ICaller {
+    TResult Call<T, TResult>(T arg);
+}
+```
 
-这个接口本身并没有泛型参数，但它包含一个泛型的`Call`方法，两个具体的泛型参数便是方法的输入和输出。那么我们想要为它提供什么样的实现呢，具体示例可以看下方代码。
+这个接口本身并没有泛型参数，但它包含一个泛型的`Call`方法，两个具体的泛型参数便是方法的输入和输出。那么我们想要为它提供什么样的实现呢，具体示例可以看下方代码：
 
-<img src="2.png" width="630" />
+```csharp
+public class TicksToDateTimeCaller : ICaller {
+    public TResult Call<T, TResult>(T arg) {
+        Debug.Assert(typeof(T) == typeof(long) && typeof(TResult) == typeof(DateTime));
+
+        return (TResult)(object)TicksToDateTime((long)(object)arg);
+    }
+    
+    private DateTime TicksToDateTime(long ticks) {
+        return new DateTime(ticks);
+    }
+}
+```
 
 如图所示，事实上我们只支持一种泛型参数组合，这是一种从“通用”到“不通用”的转变，于是我将其称之为“逆泛型”。我们在`Call`方法中判断两个泛型参数的类型，假如它是我们所期望的`long`和`DateTime`，我们将会调用那段具体的逻辑。
 
