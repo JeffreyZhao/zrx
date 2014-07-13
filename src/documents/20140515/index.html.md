@@ -13,7 +13,7 @@ note_date: "2014-05-15"
 
 且看下方的接口：
 
-```csharp
+```cs
 public interface ICaller {
     TResult Call<T, TResult>(T arg);
 }
@@ -21,7 +21,7 @@ public interface ICaller {
 
 这个接口本身并没有泛型参数，但它包含一个泛型的`Call`方法，两个具体的泛型参数便是方法的输入和输出。那么我们想要为它提供什么样的实现呢，具体示例可以看下方代码：
 
-```csharp
+```cs
 public class TicksToDateTimeCaller : ICaller {
     public TResult Call<T, TResult>(T arg) {
         Debug.Assert(typeof(T) == typeof(long) && typeof(TResult) == typeof(DateTime));
