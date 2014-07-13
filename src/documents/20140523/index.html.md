@@ -16,7 +16,9 @@ note_date: "2014-05-23"
 
 不过，无论是`HashSet`还是`SortedSet`，都需要进行多次比较或是计算，性能相对较差。事实上，它们对于这个场景来说都显得有些过重，我们完全可以用一个简单得多的实现，几十行代码即可：
 
-<img src="1.png" width="532" />
+```cs
+public interface ILinkedSetElement<T>    where T : class, ILinkedSetElement<T> {        T Next { get; set; }}public class LinkedSet<T>    where T : class, ILinkedSetElement<T> {    private T _top;    private T _bottom;    public void Add(T ele) {        Debug.Assert(ele.Next == null, "It's already in a set!");        ele.Next = _top;        _top = ele;        if (_bottom == null) {            _bottom = _top;        }    }    public T RemoveOne() {        var top = _top;        _top = top.Next;        if (_top == null) {            _bottom = null;        }        top.Next = null;        return top;    }    public bool IsEmpty {        get { return _top == null; }    }    public bool Contains(T ele) {        return ele.Next != null || ele == _bottom;    }}
+```
 
 `LinkedSet`的原理是，通过要求每个元素强制实现一个接口，让其自带一个与自身类型相同的`Next`指针，这样在`LinkedSet`内部，我们可以将元素依次串联起来，而无需分配任何额外的对象。至于判断一个元素是否在集合中，只要检查它的`Next`是否为空，以及它是否为集合的第一个元素（`_bottom`）即可。它的接口很有限，几乎就是一个“栈”，但足以满足我们的场景了。
 

@@ -6,14 +6,6 @@
     <link rel="stylesheet" href="/styles/markdown-here.css" />
     <link rel="stylesheet" href="/scripts/highlightjs/vs.css" />
     <link rel="stylesheet" href="/styles/main.css" />
-    <!--style>
-      body {
-        font-size: 12pt;
-      }
-      h1 {
-        font-size: 20pt;
-      }
-    </style-->
   </head>
   <body>
     <h1><%- @document.title %></h1>

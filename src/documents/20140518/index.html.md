@@ -18,7 +18,8 @@ note_date: "2014-05-18"
 
 假如我们只是要做一些小实验，比如查看某个对象所占用的内存，则完全可以使用接下来我要介绍的方法。假设，我们现在想要知道一下，存放100个随机元素的字典会占用多少内存，便可以这么做：
 
-<img src="1.png" width="598" />
+```cs
+var array = Enumerable.Range(0, 100).Select(_ => new object()).ToArray();var preRun = array.ToDictionary(o => o);var start = GC.GetTotalMemory(true);var d = array.ToDictionary(o => o);var end = GC.GetTotalMemory(true);Console.WriteLine(end - start);GC.KeepAlive(d);GC.KeepAlive(preRun);```
 
 这里用到了两个平时可能不太常用的方法。第一个是`GC.GetTotalMemory(falseFullCollection)`，用于获得当前堆上所占用的内存，传入`true`意味着统计前要做一次完整的GC（包括Finalization）。第二个是`GC.KeepAlive(object)`，这个方法其实什么事情都不做，只不过让代码中可以多出一份对此对象的引用，避免被垃圾回收掉。
 
