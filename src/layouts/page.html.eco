@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%- @document.title %> - 赵人希</title>
+    <link rel="stylesheet" href="/styles/markdown-here.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <h1>“赵人希”微信公众账号</h1>
+    <p><a href="./">首页</a></p>
+    <%- @content %>
+  </body>
+</html>
