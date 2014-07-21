@@ -181,4 +181,4 @@ new Thread(() =>
 
 对了，<span style="color:red;">用Java的同学们这次也可以来一试哟</span>。
 
-注：本期的封面是TPL Dataflow中的`BufferBlock`组件。TPL Dataflow可谓神器，在日常开发过程中给予了我很大帮助。
+注：本期的封面是TPL Dataflow中的`BufferBlock`组件示意图。TPL Dataflow可谓神器，在日常开发过程中给予了我很大帮助。
