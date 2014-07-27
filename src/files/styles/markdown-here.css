@@ -133,7 +133,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 h4 {
@@ -186,4 +186,8 @@ table tr th, table tr td {
 table tr th {
  font-weight: bold;
   background-color: #F0F0F0;
+}
+
+ol {
+  list-style-type: decimal
 }
