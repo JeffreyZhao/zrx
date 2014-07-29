@@ -9,15 +9,15 @@ note_date: "2014-07-27"
 
 所谓“检测”，英文叫做Profiling，用来做Profiling的工具自然叫做Profiler。检测性能问题有Performance Profiler，检测内存问题则有Memory Profiler。每个成熟的技术平台都有大量成熟的Profiler，尤其是商业产品，没有人会放弃这块市场。反过来说，假如这个平台没有好用的Profiler，那几乎可以认为它还不够成熟，还不够用来做认真的项目。
 
-当然Profiler之间是有高下的。对于此类专业工具来说，商业Profiler几乎总是比免费的要强大的多，而商业产品之间也会有很大差距。例如，.NET方面我之前最常用的是Yourkit家的.NET Profiler：
+当然Profiler之间是有高下的。对于此类专业工具来说，商业Profiler几乎总是比免费的要强大的多，而商业产品之间也会有很大差距。例如，.NET方面我之前最常用的是YourKit家的.NET Profiler：
 
 <img src="1.png" />
 
-现在想了想，用它得原因大概是因为老板是Java背景吧。Yourkit Java Profiler似乎做的很不错，但他家的.NET Profiler就实在让人难以恭维了。总体而言，界面是不错，但一旦开始Profiling，那程序一下子就变得奇慢。
+现在想了想，用它的原因大概主要是因为老板是Java背景吧。YourKit Java Profiler似乎做的很不错，但他家的.NET Profiler就实在让人不敢恭维了。总体而言，界面是不错，但一旦开始Profiling，那程序一下子就变得奇慢。
 
 对于一个Profiler来说，给程序带来负担（overhead）是难以避免的。一般来说，Profiler都会提供多种探测方式，例如采样（Sampling）或是追踪（Tracing）。“采样”一般都是定时打点，看看程序每个线程当前落在哪个方法里，当前的调用堆栈是什么，以此发现程序热点，“追踪”则往往会记录方法进入和退出的时间，所以显然前者的负担要小过后者。
 
-一般来说，负担越大的探测方式，获得的结果越为准确，但负担本身不属于程序本身，因此负担越大，往往越难体现程序真正的性能问题，这中间是个权衡。不过好玩的是，Yourkit Profiler的“采样”负担就比JetBrains dotTrace的“追踪”还要来的高，而Yourkit Profiler的“追踪”几乎就让我的程序慢的无法使用了，而dotTrace的“采样”似乎不会让程序慢多少。
+一般来说，负担越大的探测方式，获得的结果越为准确，但负担本身不属于程序本身，因此负担越大，往往越难体现程序真正的性能问题，这中间是个权衡。不过好玩的是，YourKit Profiler的“采样”负担就比JetBrains dotTrace的“追踪”还要来的高，而YourKit Profiler的“追踪”几乎就让我的程序慢的无法使用了，而dotTrace的“采样”似乎不会让程序慢多少。
 
 <img src="2.png" />
 
